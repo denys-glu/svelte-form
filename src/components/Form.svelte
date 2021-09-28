@@ -1,7 +1,7 @@
 <script>
 
     let data = {
-        bankName: '',
+        bankName: 'WFB',
         printDate:'',
         oneOone:'',
         zeroOneNumberCheck:'',
@@ -33,6 +33,7 @@
     }
 
     function validate(e) {
+        console.log(e.target.value)
         if (e.target.name === 'bankName') {
             if (e.target.value.length !== 3) {
                 errors.bankName = 'Bank name should be 3 characters long'
@@ -129,6 +130,14 @@
                 myString += addZeroes(data[key])
             } else if (key === 'amount') {
                 myString += addZeroes(data[key])
+            } else if (key === 'printDate') {
+                let dateArray = data[key].split("-");
+                let date = '';
+                date += dateArray[1];
+                date += dateArray[2];
+                date += dateArray[0];
+                
+                myString += date;
             } else {
                 myString += data[key]
             }
@@ -195,19 +204,19 @@
 
     <div class="input-group">
         <label for="first">101</label>
-        <input bind:value={data.oneOone} type="number" placeholder="max 3"  name="oneOone" required>
+        <input bind:value={data.oneOone} type="tel" placeholder="max 3"  name="oneOone" required>
     </div>
     <div class="error">{errors.oneOone}</div>
 
     <div class="input-group">
         <label for="first">01_number_check</label>
-        <input bind:value={data.zeroOneNumberCheck} type="number" placeholder="max 2"  name="zeroOneNumberCheck" required>    
+        <input bind:value={data.zeroOneNumberCheck} type="tel" placeholder="max 2"  name="zeroOneNumberCheck" required>    
     </div>
     <div class="error">{errors.zeroOneNumberCheck}</div>
 
     <div class="input-group">
         <label for="first">Account number</label>
-        <input bind:value={data.accountNumber} type="number" placeholder="max 10"  name="accountNumber" required>
+        <input bind:value={data.accountNumber} type="tel" placeholder="max 10"  name="accountNumber" required>
     </div>
     <div class="error">{errors.accountNumber}</div>
 
@@ -219,19 +228,19 @@
 
     <div class="input-group">
         <label for="first">Bill period</label>
-        <input bind:value={data.billPeriod} type="number" placeholder="max 6"  name="billPeriod" required>
+        <input bind:value={data.billPeriod} type="tel" placeholder="max 6"  name="billPeriod" required>
     </div>
     <div class="error">{errors.billPeriod}</div>
 
     <div class="input-group">
         <label for="first">Amount</label>
-        <input bind:value={data.amount} type="number" placeholder="max 10"  name="amount" required>
+        <input bind:value={data.amount} type="tel" placeholder="max 10"  name="amount" required>
     </div>
     <div class="error">{errors.amount}</div>
 
     <div class="input-group">
         <label for="first">Trust number</label>
-        <input bind:value={data.trustNumber} type="number" placeholder="max 3"  name="trustNumber" required>
+        <input bind:value={data.trustNumber} type="tel" placeholder="max 3"  name="trustNumber" required>
     </div>
     <div class="error">{errors.trustNumber}</div>
 
